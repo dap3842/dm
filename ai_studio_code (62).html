@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демократия, Правовое Государство и Гражданское Общество</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --secondary: #0d9488;
+            --accent: #d97706;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #cbd5e1;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.65;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+        }
+
+        /* HEADER & HERO */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: white;
+            padding: 50px 20px 35px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-light);
+        }
+
+        .header-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            max-width: 820px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: #cbd5e1;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 15px;
+            gap: 8px;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: #eff6ff;
+            color: var(--primary-light);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 55px;
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-light);
+            padding-left: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 1.85rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* CARDS & GRIDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h3 {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-green { background: #dcfce7; color: #166534; }
+        .badge-orange { background: #ffedd5; color: #9a3412; }
+
+        /* EXAMPLES & CALLOUTS */
+        .example-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--secondary);
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-top: 14px;
+            font-size: 0.93rem;
+        }
+
+        .example-box strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* QUOTE BANNER */
+        .quote-banner {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: #f8fafc;
+            border-radius: var(--radius);
+            padding: 26px;
+            margin: 25px 0;
+        }
+
+        .quote-banner p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .quote-banner span {
+            display: block;
+            text-align: right;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        /* TABLES */
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 15px 18px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-principle-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.02rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* QUIZ */
+        .quiz-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 22px;
+            border: 1px solid var(--border);
+        }
+
+        .quiz-opt {
+            display: block;
+            margin: 8px 0;
+            padding: 11px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .quiz-opt:hover {
+            background-color: #eff6ff;
+            border-color: var(--primary-light);
+        }
+
+        .quiz-feedback {
+            margin-top: 10px;
+            font-weight: 600;
+            display: none;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 35px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #cbd5e1;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.9rem; }
+            .section-header h2 { font-size: 1.5rem; }
+            th, td { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO HEADER -->
+    <header>
+        <span class="header-tag">Обществознание & Политология</span>
+        <h1>Демократия и Гражданское Общество</h1>
+        <p>Полный систематизированный учебный комплекс по главе 4: принципы правового государства, разделение властей и институты гражданского общества.</p>
+    </header>
+
+    <!-- NAVIGATION MENU -->
+    <nav>
+        <a href="#etymology">Определение</a>
+        <a href="#principles">Признаки Демократии</a>
+        <a href="#forms">Формы Демократии</a>
+        <a href="#theories">Модели Политологии</a>
+        <a href="#rule-of-law-table">Принципы Правового Государства (Таблица)</a>
+        <a href="#branches">Разделение Властей</a>
+        <a href="#civil-society">Гражданское Общество</a>
+        <a href="#quiz">Проверка Знаний</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- SECTION 1: DEFINITION & ETYMOLOGY -->
+        <section id="etymology">
+            <div class="section-header">
+                <h2>1. Что такое демократия?</h2>
+                <p>Этимология, сущность и академическое определение (по с. 16 учебника)</p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <span class="badge badge-blue">Происхождение термина</span>
+                    <h3 style="margin-top: 10px;">Греческие корни понятия</h3>
+                    <p>Слово <strong>«демократия»</strong> происходит от двух древнегреческих слов:</p>
+                    <ul style="margin: 12px 0 12px 25px; line-height: 1.75;">
+                        <li><strong>Dēmos (δῆμος)</strong> — народ;</li>
+                        <li><strong>Kratos (κράτος)</strong> — власть, правление.</li>
+                    </ul>
+                    <p>Смысл этого понятия очевиден — <strong>«народовластие»</strong> или <em>власть народа</em>.</p>
+                    <div class="example-box">
+                        <strong>Прикладная политология (врезка с. 16):</strong>
+                        Изучает частные политические проблемы и способствует конструктивному решению актуальных практических задач, вырабатывая рекомендации для властных структур.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-green">Научное определение</span>
+                    <h3 style="margin-top: 10px;">Современное понимание</h3>
+                    <p><strong>Демократия</strong> — это способ политической организации общества, основанный на:</p>
+                    <ul style="margin: 12px 0 12px 25px; line-height: 1.75;">
+                        <li>Участии граждан в формировании и осуществлении государственной власти;</li>
+                        <li>Принятии политических решений <strong>большинством</strong> при обязательном уважении интересов и <strong>прав меньшинства</strong>;</li>
+                        <li>Признании народа единственным источником государственной власти.</li>
+                    </ul>
+                    <div class="example-box">
+                        <strong>Защита прав меньшинств:</strong>
+                        Меньшинство обязано подчиняться решению большинства, но сохраняет законное право на оппозицию, выражение собственного мнения и критику курса власти.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: VALUES AND PRINCIPLES -->
+        <section id="principles">
+            <div class="section-header">
+                <h2>2. Основные ценности демократии</h2>
+                <p>Базовые основания, отличающие демократический режим от недемократических</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <span class="badge badge-blue">Высшая ценность</span>
+                    <h3 style="margin-top: 10px;">Человек и его права</h3>
+                    <p>Признание человека, его жизни, чести, достоинства, личной неприкосновенности, прав и свобод высшей ценностью, определяющей смысл деятельности государства.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-blue">Власть</span>
+                    <h3 style="margin-top: 10px;">Народовластие</h3>
+                    <p>Власть осуществляется для народа и от имени народа. Все граждане имеют равные политические возможности для прямого или косвенного участия в управлении делами страны.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-blue">Равноправие</span>
+                    <h3 style="margin-top: 10px;">Равенство перед законом</h3>
+                    <p>Принцип равноправия всех граждан в правах, в том числе политических, исключающий сословные, имущественные или должностные привилегии.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-green">Выборы</span>
+                    <h3 style="margin-top: 10px;">Регулярная сменяемость</h3>
+                    <p>Регулярное проведение конкурентных свободных выборов на основе всеобщего, прямого, равного избирательного права при тайном голосовании.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-green">Открытость</span>
+                    <h3 style="margin-top: 10px;">Гласность власти</h3>
+                    <p>Широкое информирование граждан о работе государственных институтов, проектах решений, бюджете и планах органов власти без цензуры.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-green">Толерантность</span>
+                    <h3 style="margin-top: 10px;">Культура консенсуса</h3>
+                    <p>Отказ от насилия, ориентация на мирное урегулирование споров, толерантность политических соперников и стремление к поиску компромисса.</p>
+                </div>
+            </div>
+
+            <div class="quote-banner">
+                <p>«Демократия, всегда распутье: ни один путь тут не заказан, ни одно направление тут не запрещено. Над всей жизнью, над всей мыслью господствует принцип относительности, терпимости, широчайших допущений и признаний».</p>
+                <span>— П. И. Новгородцев (1866–1924), русский философ права (с. 18 учебника)</span>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FORMS OF DEMOCRACY -->
+        <section id="forms">
+            <div class="section-header">
+                <h2>3. Формы демократии: Непосредственная vs Представительная</h2>
+                <p>Способы волеизъявления народа (по схеме на с. 17 учебника)</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Форма демократии</th>
+                            <th style="width: 45%;">Сущность и механизмы</th>
+                            <th style="width: 30%;">Практические примеры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">Непосредственная (прямая) демократия</span>
+                                <span class="badge badge-blue">Прямое участие</span>
+                            </td>
+                            <td>Прямое участие граждан в управлении государством и принятии ключевых решений без посредников путём личного волеизъявления.</td>
+                            <td>
+                                • <strong>Всенародное голосование (референдум):</strong> принятие Конституции РФ 12 декабря 1993 года;<br>
+                                • Сходы граждан, собрания жителей микрорайонов;<br>
+                                • Выборы (как непосредственный акт голосования).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">Представительная (репрезентативная) демократия</span>
+                                <span class="badge badge-green">Через представителей</span>
+                            </td>
+                            <td>Участие граждан в управлении государством через представительные, выборные органы власти, подотчётные избирателям (через делегирование властных полномочий).</td>
+                            <td>
+                                • Выборы депутатов <strong>Государственной Думы РФ</strong>;<br>
+                                • Выборы депутатов региональных законодательных собраний;<br>
+                                • Муниципальные советы депутатов городов и районов.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THEORIES & POLITICAL SCIENCE -->
+        <section id="theories">
+            <div class="section-header">
+                <h2>4. Теории демократии и политическая мысль</h2>
+                <p>Исследования тоталитаризма и плюралистические модели (с. 17, 18 учебника)</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <span class="badge badge-orange">Ученые XX века</span>
+                    <h3 style="margin-top: 10px;">Ханна Арендт (1906–1975)</h3>
+                    <p>Немецко-американский политолог, философ и историк. Изучала современное ей общество и феномен тоталитаризма.</p>
+                    <p style="margin-top: 8px;">Она установила, что предпосылкой зарождения тоталитарных движений в XX веке стало появление <strong>«человека массы»</strong> — атомизированного индивида, потерявшего связи с гражданскими институтами и ставящего повиновение диктатору выше собственной свободы.</p>
+                    <div class="example-box">
+                        <strong>Вывод политологии:</strong> Развитое гражданское общество и демократические институты — единственная надежная преграда перед возникновением диктатур.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-orange">Концепции (рубрика с. 18)</span>
+                    <h3 style="margin-top: 10px;">Модели демократии в науке</h3>
+                    <ul style="margin: 8px 0 8px 20px; line-height: 1.7;">
+                        <li><strong>Охранительная демократия:</strong> фокус на защите граждан от государственного произвола.</li>
+                        <li><strong>Развивающаяся демократия:</strong> акцент на нравственном самосовершенствовании активных граждан.</li>
+                        <li><strong>Партисипаторная (демократия участия):</strong> максимальное вовлечение людей в принятие локальных и общегосударственных решений.</li>
+                        <li><strong>Полиархия (Роберт Даль):</strong> власть не «всего абстрактного народа», а открытая соревновательность многих меньшинств и групп интересов.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RULE OF LAW TABLE (MAIN TASK FROM PHOTO) -->
+        <section id="rule-of-law-table">
+            <div class="section-header">
+                <h2>5. Принципы правового государства (Подробная таблица к заданию)</h2>
+                <p>Заполнение таблицы с учебной доски на основе с. 17–19 учебника</p>
+            </div>
+
+            <div style="background-color: #eff6ff; border-left: 4px solid var(--primary-light); padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
+                <strong>Определение (с. 18 учебника):</strong>
+                <strong>Правовое государство</strong> — это демократическое государство, в котором реализуется принцип верховенства права, права и свободы человека и гражданина являются высшей ценностью, а государственная власть ограничена правом и действует на основе разделения властей.
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 28%;">Принцип (из задания на доске)</th>
+                            <th style="width: 44%;">Его подробная характеристика</th>
+                            <th style="width: 28%;">Практическое проявление и механизм реализации</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 1. Верховенство закона -->
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">1. Верховенство закона (права)</span>
+                                <span class="badge badge-blue">Основа правопорядка</span>
+                            </td>
+                            <td>
+                                Предусматривает, что ни один орган государственной власти, должностное лицо, коллектив, организация или гражданин <strong>не вправе нарушать законы</strong> или не подчиняться им. Утверждается безусловный приоритет (господство) закона как совокупности общих норм в механизме социального управления. Все нормативные акты и подзаконные решения должны строго соответствовать Конституции и действующим законам.
+                            </td>
+                            <td>
+                                • Общеобязательность правовых предписаний для президента, министров, судей и рядовых граждан;<br>
+                                • Недействительность любых нормативных актов, если они противоречат Конституции РФ.
+                            </td>
+                        </tr>
+
+                        <!-- 2. Незыблемость прав и свобод -->
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">2. Незыблемость прав и свобод человека</span>
+                                <span class="badge badge-green">Высшая ценность</span>
+                            </td>
+                            <td>
+                                Права и свободы человека носят естественный, прирождённый характер и принадлежат каждому от рождения. Они должны быть <strong>не только провозглашены, но и реально гарантированы государством</strong>. Государство связано этими правами и не может их произвольно отменять или ущемлять.
+                            </td>
+                            <td>
+                                • Прямое закрепление прав и свобод в Конституции (гл. 2 Конституции РФ);<br>
+                                • Действие института Уполномоченного по правам человека (омбудсмена);<br>
+                                • Судебная защита прав, презумпция невиновности, право на квалифицированную адвокатскую помощь.
+                            </td>
+                        </tr>
+
+                        <!-- 3. Разделение властей -->
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">3. Разделение властей</span>
+                                <span class="badge badge-orange">Баланс ветвей власти</span>
+                            </td>
+                            <td>
+                                Организация и функционирование государственной власти на основе разграничения полномочий между независимыми ветвями власти: <em>законодательной, исполнительной и судебной</em>. Каждая ветвь власти исполняет строго определённую функцию, которую другие ветви выполнять не могут. Это препятствует сосредоточению (узурпации) власти в одних руках.
+                            </td>
+                            <td>
+                                • Действие <strong>системы «сдержек и противовесов»</strong>:<br>
+                                — Законодатели принимают законы и бюджет;<br>
+                                — Исполнительная власть управляет и обладает правом законодательной инициативы/вето;<br>
+                                — Независимый суд контролирует конституционность законов.
+                            </td>
+                        </tr>
+
+                        <!-- 4. Взаимная ответственность -->
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">4. Взаимная ответственность государства и гражданина</span>
+                                <span class="badge badge-blue">Двусторонний договор</span>
+                            </td>
+                            <td>
+                                Двусторонняя правовая связь вместо одностороннего государственного диктата:<br>
+                                • <strong>Ответственность личности:</strong> пользоваться правами в пределах закона, исполнять обязанности, соблюдать правопорядок и отвечать за правонарушения.<br>
+                                • <strong>Ответственность государства:</strong> гарантировать права, охранять их от посягательств, привлекать нарушителей к ответу и восстанавливать справедливость.
+                            </td>
+                            <td>
+                                • Обязанность государства возместить вред гражданину, причинённый незаконными действиями органов власти или должностных лиц (ст. 53 Конституции РФ);<br>
+                                • Наличие прокуратуры, судов, полиции для эффективной защиты граждан.
+                            </td>
+                        </tr>
+
+                        <!-- 5. Развитая правовая культура -->
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">5. Развитая правовая культура граждан</span>
+                                <span class="badge badge-green">Правосознание общества</span>
+                            </td>
+                            <td>
+                                Высокий уровень правовых знаний и осознанное отношение общества к законам. Включает уважение к правовым предписаниям, отказ от правового нигилизма (пренебрежения нормами права) и активное использование своих конституционных полномочий для защиты прав законным путём.
+                            </td>
+                            <td>
+                                • Цивилизованное решение споров через суд, а не с помощью «связей», взяток или насилия;<br>
+                                • Общественный контроль за выборами, участие в публичных слушаниях, правовое просвещение населения.
+                            </td>
+                        </tr>
+
+                        <!-- 6. Плюрализм -->
+                        <tr>
+                            <td>
+                                <span class="table-principle-name">6. Политический и идеологический плюрализм</span>
+                                <span class="badge badge-orange">Свобода мысли и мнений</span>
+                            </td>
+                            <td>
+                                Принцип многообразия конкурирующих политических партий (многопартийность), движений, взглядов и убеждений (с. 17 учебника). Никакая идеология не вправе претендовать на государственную монополию. Плюрализм предполагает отказ от насилия, толерантность к оппонентам, ориентацию на компромисс и консенсус.
+                            </td>
+                            <td>
+                                • Легальное существование парламентской и непарламентской оппозиции;<br>
+                                • Свобода независимых СМИ, отсутствие обязательной единой партийной идеологии.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 6: BRANCHES OF POWER & CHECKS & BALANCES -->
+        <section id="branches">
+            <div class="section-header">
+                <h2>6. Механизм разделения властей в РФ</h2>
+                <p>Функции трёх независимых ветвей власти (с. 18–19 учебника)</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card" style="border-top: 4px solid var(--primary-light);">
+                    <h3>Законодательная власть</h3>
+                    <p><strong>Орган в РФ:</strong> Федеральное Собрание (парламент: Государственная Дума и Совет Федерации).</p>
+                    <p style="margin-top: 8px;"><strong>Функции:</strong> Разработка, обсуждение и принятие законов, утверждение государственного бюджета, ратификация международных договоров.</p>
+                    <div class="example-box">
+                        <strong>Рычаг противовеса:</strong> Госдума может выразить вотум недоверия Правительству или выдвинуть обвинение против Президента (импичмент).
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--secondary);">
+                    <h3>Исполнительная власть</h3>
+                    <p><strong>Орган в РФ:</strong> Правительство РФ (председатель, министерства, службы и федеральные агентства).</p>
+                    <p style="margin-top: 8px;"><strong>Функции:</strong> Повседневное государственное управление, обеспечение исполнения законов, реализация экономической, социальной и оборонной политики.</p>
+                    <div class="example-box">
+                        <strong>Рычаг противовеса:</strong> Президент обладает правом вето на принятые законы; Правительство формирует и исполняет госбюджет.
+                    </div>
+                </div>
+
+                <div class="card" style="border-top: 4px solid var(--accent);">
+                    <h3>Судебная власть</h3>
+                    <p><strong>Орган в РФ:</strong> Конституционный Суд РФ, Верховный Суд РФ и суды общей юрисдикции.</p>
+                    <p style="margin-top: 8px;"><strong>Функции:</strong> Независимое правосудие, защита прав и законных интересов личности, надзор за строгим выполнением правовых норм.</p>
+                    <div class="example-box">
+                        <strong>Рычаг противовеса:</strong> Конституционный Суд может признать федеральный закон неконституционным, лишив его юридической силы.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: CIVIL SOCIETY -->
+        <section id="civil-society">
+            <div class="section-header">
+                <h2>7. Гражданское общество</h2>
+                <p>Определение, сущность и формы общественных объединений (с. 19 учебника)</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <span class="badge badge-blue">Понятие</span>
+                    <h3 style="margin-top: 10px;">Что такое гражданское общество?</h3>
+                    <p><strong>Гражданское общество</strong> — совокупность негосударственных отношений и институтов, выражающих частные интересы и потребности граждан в различных сферах жизни.</p>
+                    <p style="margin-top: 10px;">В отличие от государства, где преобладают <em>вертикальные связи власти и подчинения</em>, в гражданском обществе господствуют <strong>горизонтальные связи</strong> — отношения равноправного сотрудничества и партнерства между свободными людьми.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-green">Формы по законодательству РФ</span>
+                    <h3 style="margin-top: 10px;">Формы общественных объединений (с. 19)</h3>
+                    <ul style="margin: 8px 0 8px 20px; line-height: 1.75;">
+                        <li><strong>Общественная организация</strong> (основанная на членстве, напр. профсоюз, союз журналистов);</li>
+                        <li><strong>Общественное движение</strong> (массовые экологические, молодежные движения);</li>
+                        <li><strong>Общественный фонд</strong> (сбор средств на благотворительность, медицину);</li>
+                        <li><strong>Общественное учреждение</strong> (оказание услуг населению);</li>
+                        <li><strong>Орган общественной самодеятельности</strong> (домовые комитеты, ТОС);</li>
+                        <li><strong>Политическая партия</strong> (борьба за власть и участие в управлении).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: INTERACTIVE QUIZ & KNOWLEDGE CHECK -->
+        <section id="quiz">
+            <div class="section-header">
+                <h2>8. Закрепление знаний по уроку</h2>
+                <p>Интерактивная экспресс-проверка материала параграфа</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Question 1 -->
+                <div class="quiz-card">
+                    <h4>Вопрос 1: Что в соответствии с учебником и Конституцией РФ является высшей ценностью демократического правового государства?</h4>
+                    <label class="quiz-opt" onclick="checkAnswer(this, false, 'q1-feedback')">
+                        <input type="radio" name="q1"> А) Экономическая мощь и расширение территории страны
+                    </label>
+                    <label class="quiz-opt" onclick="checkAnswer(this, true, 'q1-feedback')">
+                        <input type="radio" name="q1"> Б) Человек, его права и свободы
+                    </label>
+                    <label class="quiz-opt" onclick="checkAnswer(this, false, 'q1-feedback')">
+                        <input type="radio" name="q1"> В) Безусловное подчинение граждан воле руководителя страны
+                    </label>
+                    <div id="q1-feedback" class="quiz-feedback"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-card">
+                    <h4>Вопрос 2: В чём проявляется горизонтальный характер связей в гражданском обществе?</h4>
+                    <label class="quiz-opt" onclick="checkAnswer(this, false, 'q2-feedback')">
+                        <input type="radio" name="q2"> А) В исполнении обязательных приказов вышестоящих ведомств
+                    </label>
+                    <label class="quiz-opt" onclick="checkAnswer(this, true, 'q2-feedback')">
+                        <input type="radio" name="q2"> Б) В добровольном взаимодействии равноправных граждан и объединений
+                    </label>
+                    <label class="quiz-opt" onclick="checkAnswer(this, false, 'q2-feedback')">
+                        <input type="radio" name="q2"> В) В централизованном распределении финансов государством
+                    </label>
+                    <div id="q2-feedback" class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Учебное пособие по обществознанию и политологии</strong></p>
+        <p style="margin: 6px 0;">Материал составлен на основе текста учебника (§ 4 «Демократия и гражданское общество»), Конституции РФ и ФЗ «Об общественных объединениях».</p>
+        <p>© 2026 Образовательный атлас.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        function checkAnswer(element, isCorrect, feedbackId) {
+            const feedback = document.getElementById(feedbackId);
+            feedback.style.display = 'block';
+            
+            if (isCorrect) {
+                feedback.style.color = '#15803d';
+                feedback.innerHTML = '✔ Верно! Ответ полностью соответствует материалу учебника.';
+            } else {
+                feedback.style.color = '#b91c1c';
+                feedback.innerHTML = '✖ Неверно. Обратите внимание на ключевые определения раздела.';
+            }
+        }
+    </script>
+</body>
+</html>
